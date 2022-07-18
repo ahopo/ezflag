@@ -29,7 +29,7 @@ func GetValue(s string, l string, _default interface{}) interface{} {
 	return _default
 }
 func reg(i string) (o *regexp.Regexp) {
-	return regexp.MustCompile(fmt.Sprintf(`(%s\s\w+)`, i))
+	return regexp.MustCompile(fmt.Sprintf(`%s+\s+["\~\/.\w]*`, i))
 }
 
 func Args() string {
@@ -79,7 +79,7 @@ func ViewHelp() {
 	fmt.Println("\nCommands:")
 	for i, d := range infos {
 		if i+1 == d.index && isnotEmpty(d.long) || isnotEmpty(d.short) {
-			fmt.Printf("[%s] %s %s\n\t:%s\n", d.dtype, d.short, d.long, d.description)
+			fmt.Printf("[%s] %s %s\t-- %s\n", d.dtype, d.short, d.long, d.description)
 		} else {
 			fmt.Println(d.description)
 		}
