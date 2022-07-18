@@ -29,7 +29,7 @@ func GetValue(s string, l string, _default interface{}) interface{} {
 	return _default
 }
 func reg(i string) (o *regexp.Regexp) {
-	return regexp.MustCompile(fmt.Sprintf(`%s+\s+["\~\/.\w]*`, i))
+	return regexp.MustCompile(fmt.Sprintf(`%s\s["\~\/.\w]*`, i))
 }
 
 func Args() string {
